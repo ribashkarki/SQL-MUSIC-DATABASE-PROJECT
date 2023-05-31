@@ -1,1 +1,9 @@
 # SQL-MUSIC-DATABASE-PROJECT
+
+
+Database and Tools
+1.Postgre SQL
+2.PgAdmin4
+
+
+SCHEMA OF MUSIC DATABASE
