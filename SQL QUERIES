@@ -36,9 +36,10 @@ ORDER BY INVOICE_TOTAL DESC
 LIMIT 5;
 
 
-
-
 -------------------------------------------------------------------------------------------------------------------------------------------------------
+/*Q5.  Who is the best customer? The customer who has spent the 
+most money will be declared the best customer. Write a query
+that returns the person who has spent the most money */
 
 
 
