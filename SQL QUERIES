@@ -41,8 +41,13 @@ LIMIT 5;
 most money will be declared the best customer. Write a query
 that returns the person who has spent the most money */
 
-
-
+SELECT C.CUSTOMER_ID, C.FIRST_NAME, C.LAST_NAME,SUM(I.TOTAL) AS TOTAL
+FROM CUSTOMER AS C
+JOIN INVOICE AS I
+ON C.CUSTOMER_ID= I.CUSTOMER_ID
+GROUP BY C.CUSTOMER_ID
+ORDER BY TOTAL DESC
+LIMIT 1;
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
