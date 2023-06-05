@@ -95,39 +95,44 @@ WHERE MILLISECONDS >
 ORDER BY MILLISECONDS DESC;
 
 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+/* Q9: Find how much amount spent by each customer on artists? Write a query 
+to return customer name,artist name and total spent */
+--CTE TO FIND artist_id,artist_name, total sales from invoice_line i.e quantity * price
+
+WITH best_selling AS ( 
+	SELECT a.artist_id, a.name, 
+	SUM(i.unit_price*i.quantity)
+	FROM artist AS a
+	JOIN album AS al ON al.artist_id= a.artist_id
+	JOIN track AS t ON t.album_id= al.album_id
+	JOIN invoice_line AS i ON i.track_id=t.track_id
+	GROUP BY 1 
+	ORDER BY 3 DESC
+	LIMIT 1
+	)
+
+SELECT c.customer_id,c.first_name,c.last_name,bs.name,
+SUM(i.quantity*i.unit_price)
+FROM customer AS c 
+JOIN invoice AS inv ON inv.customer_id=c.customer_id
+JOIN invoice_line AS i ON i.invoice_id=inv.invoice_id
+JOIN track AS t ON t.track_id = i.track_id
+JOIN album AS al ON al.album_id = t.album_id
+JOIN best_selling AS bs ON bs.artist_id = al.artist_id
+GROUP BY 1,2,3,4
+ORDER BY 5 DESC;
+
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-
-
--------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
--------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
--------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
